@@ -1,0 +1,47 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+dist
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+.vercel
+
+# Large assets - using ImageKit CDN
+# Architecture images
+src/assets/architecture/**/*.jpg
+src/assets/architecture/**/*.png
+src/assets/architecture/**/*.JPG
+src/assets/architecture/**/*.jpf
+src/assets/architecture/**/*.wmv
+src/assets/architecture/**/*.pdf
+src/assets/architecture/**/*.docx
+# Keep landing page images (smaller)
+!src/assets/architecture/landing/
+
+# Clothing images - too large for Git (7GB+), using ImageKit
+src/assets/clothing/**/*.jpg
+src/assets/clothing/**/*.JPG
+src/assets/clothing/**/*.png
+src/assets/clothing/**/*.PNG
+src/assets/clothing/**/*.jpf
+# Keep landing page images (smaller)
+!src/assets/clothing/landing/
