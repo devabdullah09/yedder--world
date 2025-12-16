@@ -11,11 +11,11 @@ const LandingPage: React.FC = () => {
   const [hoveredSection, setHoveredSection] = useState<'clothing' | 'furniture' | null>(null)
 
   return (
-    <div className="flex w-full h-screen overflow-hidden">
+    <div className="flex flex-col md:flex-row w-full h-screen overflow-hidden">
       {/* Clothing Section */}
       <Link 
         to="/clothing/intro"
-        className="group relative flex-1 h-full flex items-end justify-center pb-24 cursor-pointer overflow-hidden no-underline"
+        className="group relative flex-1 h-1/2 md:h-full flex items-end justify-center pb-12 md:pb-24 cursor-pointer overflow-hidden no-underline"
         onMouseEnter={() => setHoveredSection('clothing')}
         onMouseLeave={() => setHoveredSection(null)}
       >
@@ -46,7 +46,7 @@ const LandingPage: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center">
-          <h2 className="text-[11px] sm:text-xs tracking-[0.3em] uppercase text-white font-normal m-0 font-sans">
+          <h2 className="text-[10px] sm:text-[11px] md:text-xs tracking-[0.3em] uppercase text-white font-normal m-0 font-sans px-4">
             CLOTHING
           </h2>
         </div>
@@ -55,7 +55,7 @@ const LandingPage: React.FC = () => {
       {/* Architecture & Furniture Section */}
       <Link 
         to="/architecture/intro"
-        className="group relative flex-1 h-full flex items-end justify-center pb-24 cursor-pointer overflow-hidden no-underline"
+        className="group relative flex-1 h-1/2 md:h-full flex items-end justify-center pb-12 md:pb-24 cursor-pointer overflow-hidden no-underline"
         onMouseEnter={() => setHoveredSection('furniture')}
         onMouseLeave={() => setHoveredSection(null)}
       >
@@ -86,7 +86,7 @@ const LandingPage: React.FC = () => {
         </div>
         
         <div className="relative z-10 text-center">
-          <h2 className="text-[11px] sm:text-xs tracking-[0.3em] uppercase text-[#070707] font-normal m-0 font-sans">
+          <h2 className="text-[10px] sm:text-[11px] md:text-xs tracking-[0.2em] md:tracking-[0.3em] uppercase text-[#070707] font-normal m-0 font-sans px-4">
             ARCHITECTURE & FURNITURE DESIGN
           </h2>
         </div>

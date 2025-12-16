@@ -167,6 +167,7 @@ const megaMenuData: NavItem[] = [
 const Header: React.FC = () => {
   
   const [activeMenu, setActiveMenu] = useState<string | null>(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const headerRef = useRef<HTMLDivElement | null>(null)
   const location = useLocation()
   const isLandingPage = location.pathname === '/'
@@ -258,29 +259,30 @@ const Header: React.FC = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className={`flex items-center justify-between py-[25px] px-10 transition-colors duration-500 ${isTransparent ? 'text-white' : 'text-black'}`}>
-        <div className="flex items-center gap-5">
-          <Link to="/" className="no-underline">
+      <div className={`flex items-center justify-between py-4 sm:py-5 md:py-[25px] px-4 sm:px-6 md:px-10 transition-colors duration-500 ${isTransparent ? 'text-white' : 'text-black'}`}>
+        <div className="flex items-center gap-3 sm:gap-5">
+          <Link to="/" className="no-underline" onClick={() => setMobileMenuOpen(false)}>
             <img
               src={logo}
               alt="Yedder"
-              className={`h-[30px] w-auto object-contain transition-all duration-500 ease-in-out ${
+              className={`h-[24px] sm:h-[28px] md:h-[30px] w-auto object-contain transition-all duration-500 ease-in-out ${
                 isTransparent ? 'brightness-0 invert' : 'brightness-100'
               }`}
             />
           </Link>
           <button
-            className={`bg-transparent border-none cursor-pointer p-0 text-[28px] font-light leading-none transition-all duration-500 ease-in-out w-[30px] h-[30px] flex items-center justify-center hover:rotate-90 ${
+            className={`md:hidden bg-transparent border-none cursor-pointer p-0 text-[24px] sm:text-[28px] font-light leading-none transition-all duration-500 ease-in-out w-[24px] sm:w-[30px] h-[24px] sm:h-[30px] flex items-center justify-center ${
               isTransparent ? 'text-white' : 'text-black'
             }`}
             aria-label="Open menu"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
-            
+            {mobileMenuOpen ? '✕' : '☰'}
           </button>
         </div>
 
         {!isLandingPage && (
-          <nav className="relative flex items-center gap-10">
+          <nav className="hidden md:flex relative items-center gap-6 lg:gap-10">
             {megaMenuData.map((item) => (
               item.menu ? (
                 <div
@@ -291,7 +293,7 @@ const Header: React.FC = () => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`text-[13px] font-normal tracking-[1.5px] uppercase no-underline transition-opacity duration-200 ease-in-out ${
+                    className={`text-[12px] lg:text-[13px] font-normal tracking-[1.2px] lg:tracking-[1.5px] uppercase no-underline transition-opacity duration-200 ease-in-out ${
                       activeMenu === item.label ? 'opacity-100 underline decoration-[1px]' : 'hover:opacity-70'
                     } ${isTransparent ? 'text-white' : 'text-black'}`}
                     onClick={() => {
@@ -309,7 +311,7 @@ const Header: React.FC = () => {
                 >
                   <Link
                     to={item.path || '#'}
-                    className={`text-[13px] font-normal tracking-[1.5px] uppercase no-underline transition-opacity duration-200 ease-in-out hover:opacity-70 ${
+                    className={`text-[12px] lg:text-[13px] font-normal tracking-[1.2px] lg:tracking-[1.5px] uppercase no-underline transition-opacity duration-200 ease-in-out hover:opacity-70 ${
                       isTransparent ? 'text-white' : 'text-black'
                     }`}
                     onClick={() => setActiveMenu(null)}
@@ -322,7 +324,7 @@ const Header: React.FC = () => {
           </nav>
         )}
 
-        <div className="flex items-center gap-[30px]">
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-[30px]">
           
           {['Account', 'Search', 'Shopping cart'].map((label, index) => (
             <button
@@ -333,19 +335,19 @@ const Header: React.FC = () => {
               aria-label={label}
             >
               {index === 0 && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="block">
+                <svg width="18" height="18" className="block sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="4"></circle>
                 </svg>
               )}
               {index === 1 && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="block">
+                <svg width="18" height="18" className="block sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <circle cx="11" cy="11" r="8"></circle>
                   <path d="m21 21-4.35-4.35"></path>
                 </svg>
               )}
               {index === 2 && (
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="block">
+                <svg width="18" height="18" className="block sm:w-5 sm:h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                   <line x1="3" y1="6" x2="21" y2="6"></line>
                   <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -356,24 +358,70 @@ const Header: React.FC = () => {
         </div>
       </div>
 
+      {/* Mobile Menu */}
+      {mobileMenuOpen && (
+        <div className="md:hidden bg-white border-t border-[#f0f0f0] shadow-lg">
+          <nav className="flex flex-col py-4 px-4">
+            {megaMenuData.map((item) => (
+              <div key={item.label} className="border-b border-[#f0f0f0] last:border-b-0">
+                <Link
+                  to={item.path || '#'}
+                  className="block py-4 text-[13px] font-normal tracking-[1.5px] uppercase text-black no-underline hover:opacity-70"
+                  onClick={() => {
+                    setMobileMenuOpen(false)
+                    setActiveMenu(null)
+                  }}
+                >
+                  {item.label}
+                </Link>
+                {item.menu && (
+                  <div className="pl-4 pb-2">
+                    {item.menu.map((section) => (
+                      <div key={section.title} className="mb-4">
+                        <h4 className="text-[11px] font-semibold tracking-[1.2px] uppercase text-[#555] mb-2">
+                          {section.title}
+                        </h4>
+                        <ul className="flex flex-col gap-1">
+                          {section.links.slice(0, 5).map((link) => (
+                            <li key={link.label}>
+                              <a
+                                href={link.href}
+                                className="text-sm text-[#666] hover:text-black transition-colors no-underline block py-1"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                {link.label}
+                              </a>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
+
       {activeNavItem?.menu && (
         <div 
-          className="absolute left-0 right-0 top-full bg-white border-t border-[#f0f0f0] shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
+          className="hidden md:block absolute left-0 right-0 top-full bg-white border-t border-[#f0f0f0] shadow-[0_20px_40px_rgba(0,0,0,0.08)]"
           onMouseEnter={() => setActiveMenu(activeNavItem.label)}
           onMouseLeave={() => setActiveMenu(null)}
         >
-          <div className="max-w-[1180px] mx-auto px-16 py-12 grid gap-12" style={{ gridTemplateColumns: `repeat(${activeNavItem.menu.length}, minmax(0, 1fr))` }}>
+          <div className="max-w-[1180px] mx-auto px-8 lg:px-16 py-8 lg:py-12 grid gap-8 lg:gap-12" style={{ gridTemplateColumns: `repeat(${activeNavItem.menu.length}, minmax(0, 1fr))` }}>
             {activeNavItem.menu.map((section) => (
-              <div key={section.title} className="flex flex-col gap-4">
-                <h4 className="text-xs font-semibold tracking-[1.5px] uppercase text-[#555] font-['Arial','Helvetica',sans-serif]">
+              <div key={section.title} className="flex flex-col gap-3 lg:gap-4">
+                <h4 className="text-[10px] lg:text-xs font-semibold tracking-[1.2px] lg:tracking-[1.5px] uppercase text-[#555] font-['Arial','Helvetica',sans-serif]">
                   {section.title}
                 </h4>
-                <ul className="flex flex-col gap-2">
+                <ul className="flex flex-col gap-1.5 lg:gap-2">
                   {section.links.map((link) => (
                     <li key={link.label}>
                       <a
                         href={link.href}
-                        className="text-sm text-[#666] hover:text-black transition-colors duration-200 ease-in-out no-underline"
+                        className="text-[13px] lg:text-sm text-[#666] hover:text-black transition-colors duration-200 ease-in-out no-underline"
                       >
                         {link.label}
                       </a>
