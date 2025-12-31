@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getProductDescription } from '../data/productDescriptions'
 import { getProductImages } from '../utils/productImages'
 import { getProductById } from '../data/products'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 const ProductDetailPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>()
@@ -100,7 +101,7 @@ const ProductDetailPage: React.FC = () => {
           <div className="space-y-3 sm:space-y-4">
             {/* Main Image */}
             <div className="w-full aspect-[3/4] bg-[#f5f5f5] overflow-hidden">
-              <img
+              <ImageWithFallback
                 src={product.images[selectedImage]}
                 alt={`${product.name} - Image ${selectedImage + 1}`}
                 className="w-full h-full object-cover object-center"
@@ -117,7 +118,7 @@ const ProductDetailPage: React.FC = () => {
                     selectedImage === index ? 'opacity-100 ring-2 ring-black' : 'opacity-60 hover:opacity-100'
                   }`}
                 >
-                  <img
+                  <ImageWithFallback
                     src={image}
                     alt={`${product.name} thumbnail ${index + 1}`}
                     className="w-full h-full object-cover object-center"

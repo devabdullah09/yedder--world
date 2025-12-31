@@ -3,6 +3,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getArchitectureDescription } from '../data/architectureDescriptions'
 import { getArchitectureImages } from '../utils/architectureImages'
 import { getArchitectureProjectById } from '../data/architectureProjects'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 const ArchitectureProjectDetailPage: React.FC = () => {
   const { projectId } = useParams<{ projectId: string }>()
@@ -85,7 +86,7 @@ const ArchitectureProjectDetailPage: React.FC = () => {
           <div className="space-y-3 sm:space-y-4">
             {/* Main Image */}
             <div className="w-full aspect-[3/4] bg-[#f5f5f5] overflow-hidden">
-              <img
+              <ImageWithFallback
                 src={project.images[selectedImage]}
                 alt={`${project.name} - Image ${selectedImage + 1}`}
                 className="w-full h-full object-cover object-center"
@@ -103,7 +104,7 @@ const ArchitectureProjectDetailPage: React.FC = () => {
                       selectedImage === index ? 'opacity-100 ring-2 ring-black' : 'opacity-60 hover:opacity-100'
                     }`}
                   >
-                    <img
+                    <ImageWithFallback
                       src={image}
                       alt={`${project.name} thumbnail ${index + 1}`}
                       className="w-full h-full object-cover object-center"

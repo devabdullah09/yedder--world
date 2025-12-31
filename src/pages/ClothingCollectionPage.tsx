@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { getR2Url } from '../config/r2-assets'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 // Spring 23 Collection
 const samira1 = getR2Url('clothing/1. first capsule - spring 23/1-SAMIRA-90-950/1.jpg')
@@ -407,7 +408,7 @@ const ClothingCollectionPage: React.FC = () => {
               className="group flex flex-col gap-3 sm:gap-4 no-underline"
             >
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#f5f5f5]">
-                <img
+                <ImageWithFallback
                   src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

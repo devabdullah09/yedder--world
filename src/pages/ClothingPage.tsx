@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { getR2Url } from '../config/r2-assets'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 const heroImage = getR2Url('clothing/landing/herosection.jpg')
 const springImage = getR2Url('clothing/landing/spring.jpg')
@@ -21,7 +22,7 @@ const ClothingPage: React.FC = () => {
     <div className="w-full min-h-screen bg-white mt-0">
       <div className="relative w-full h-[50vh] sm:h-[60vh] md:h-[80vh] min-h-[400px] md:min-h-[700px] flex items-end justify-center overflow-hidden pb-12 md:pb-20">
         <div className="absolute top-0 left-0 w-full h-full z-[1]">
-          <img src={heroImage} alt="Clothing Collection" className="w-full h-full object-cover object-center" />
+          <ImageWithFallback src={heroImage} alt="Clothing Collection" className="w-full h-full object-cover object-center" />
         </div>
         <div className="relative z-[2] text-center px-4">
           <h1 className="text-base sm:text-lg md:text-xl font-normal tracking-[2px] sm:tracking-[3px] md:tracking-[4px] uppercase text-white m-0 font-sans drop-shadow-[0_1px_2px_rgba(0,0,0,0.2)]">DISCOVER COLLECTION 023</h1>
@@ -32,21 +33,21 @@ const ClothingPage: React.FC = () => {
         <div className="max-w-[1240px] mx-auto flex flex-col md:flex-row gap-8 md:gap-14 px-4 sm:px-8 md:px-16">
           <Link to="/clothing?collection=SPRING 23" className="flex-1 flex flex-col items-center gap-4 md:gap-6 no-underline cursor-pointer transition-transform duration-300 ease-in-out hover:scale-[1.01]">
             <div className="w-full h-[300px] sm:h-[400px] md:h-[620px] overflow-hidden bg-white">
-              <img src={springImage} alt="Spring 23" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
+              <ImageWithFallback src={springImage} alt="Spring 23" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
             </div>
             <span className="text-[11px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#070707]">SPRING 23</span>
           </Link>
 
           <Link to="/clothing?collection=WINTER 24" className="flex-1 flex flex-col items-center gap-4 md:gap-6 no-underline cursor-pointer transition-transform duration-300 ease-in-out hover:scale-[1.01]">
             <div className="w-full h-[300px] sm:h-[400px] md:h-[620px] overflow-hidden bg-white">
-              <img src={winterImage} alt="Winter 24" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
+              <ImageWithFallback src={winterImage} alt="Winter 24" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
             </div>
             <span className="text-[11px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#070707]">WINTER 24</span>
           </Link>
 
           <Link to="/clothing?collection=AUTUMN 25" className="flex-1 flex flex-col items-center gap-4 md:gap-6 no-underline cursor-pointer transition-transform duration-300 ease-in-out hover:scale-[1.01]">
             <div className="w-full h-[300px] sm:h-[400px] md:h-[620px] overflow-hidden bg-white">
-              <img src={autumnImage} alt="Autumn 25" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
+              <ImageWithFallback src={autumnImage} alt="Autumn 25" className="w-full h-full object-cover object-center transition-transform duration-[600ms] ease-in-out hover:scale-105" />
             </div>
             <span className="text-[11px] sm:text-[12px] tracking-[0.3em] sm:tracking-[0.35em] uppercase text-[#070707]">AUTUMN 25</span>
           </Link>
@@ -64,7 +65,7 @@ const ClothingPage: React.FC = () => {
       <section className="w-full bg-white px-4 sm:px-8 md:px-16 py-12 sm:py-16 md:py-28">
         <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row items-center gap-8 md:gap-12 lg:gap-16">
           <Link to="/clothing/cashmere-ink" className="w-full lg:flex-[3] block overflow-hidden bg-white">
-            <img src={storyImageOne} alt="Cashmere Ink Look" className="w-full h-full object-cover" />
+            <ImageWithFallback src={storyImageOne} alt="Cashmere Ink Look" className="w-full h-full object-cover" />
           </Link>
 
           <div className="w-full lg:flex-[2] flex flex-col items-center text-center gap-6 md:gap-8">
@@ -81,14 +82,14 @@ const ClothingPage: React.FC = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-10">
               <Link to="/clothing/shirts" className="flex flex-col items-center gap-3 no-underline">
                 <div className="w-full max-w-[220px] h-[200px] sm:h-[240px] md:h-[260px] bg-white shadow-sm shadow-[#e8e8e8]/60 overflow-hidden">
-                  <img src={storyImageTwo} alt="Shirts" className="w-full h-full object-cover" />
+                  <ImageWithFallback src={storyImageTwo} alt="Shirts" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[#070707]">Shirts</span>
               </Link>
 
               <Link to="/clothing/outerwear" className="flex flex-col items-center gap-3 no-underline">
                 <div className="w-full max-w-[220px] h-[200px] sm:h-[240px] md:h-[260px] bg-white shadow-sm shadow-[#e8e8e8]/60 overflow-hidden">
-                  <img src={storyImageThree} alt="Outerwear" className="w-full h-full object-cover" />
+                  <ImageWithFallback src={storyImageThree} alt="Outerwear" className="w-full h-full object-cover" />
                 </div>
                 <span className="text-[10px] sm:text-[11px] tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[#070707]">Outerwear</span>
               </Link>

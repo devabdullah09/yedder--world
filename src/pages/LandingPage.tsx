@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getR2Url } from '../config/r2-assets'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 const clothingDoodle = getR2Url('landingpage/doodle-cloth.png')
 const clothingReal = getR2Url('landingpage/clothing.jpg')
@@ -25,7 +26,7 @@ const LandingPage: React.FC = () => {
             hoveredSection === 'furniture' ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <img 
+          <ImageWithFallback 
             src={clothingReal} 
             alt="Clothing" 
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -38,7 +39,7 @@ const LandingPage: React.FC = () => {
             hoveredSection === 'furniture' ? 'opacity-0' : 'opacity-100'
           }`}
         >
-          <img 
+          <ImageWithFallback 
             src={clothingDoodle} 
             alt="Clothing Sketch" 
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -65,7 +66,7 @@ const LandingPage: React.FC = () => {
             hoveredSection === 'furniture' ? 'opacity-100' : 'opacity-0'
           }`}
         >
-          <img 
+          <ImageWithFallback 
             src={furnitureDoodle} 
             alt="Furniture Sketch" 
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
@@ -78,7 +79,7 @@ const LandingPage: React.FC = () => {
             hoveredSection === 'furniture' ? 'opacity-0' : 'opacity-100'
           }`}
         >
-          <img 
+          <ImageWithFallback 
             src={furnitureReal} 
             alt="Furniture & Interior Design" 
             className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"

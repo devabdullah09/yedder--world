@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { getR2Url } from '../config/r2-assets'
+import ImageWithFallback from '../components/ImageWithFallback'
 
 // Puerto Escondido
 const moonGarden1 = getR2Url('architecture/1. Moon Garden - Puerto Escondido/Selection Carré-Pictures/1. VUE SUD.jpg')
@@ -289,7 +290,7 @@ const ArchitectureCollectionPage: React.FC = () => {
               className="group flex flex-col gap-3 sm:gap-4 no-underline"
             >
               <div className="relative w-full aspect-[3/4] overflow-hidden bg-[#f5f5f5]">
-                <img
+                <ImageWithFallback
                   src={project.image}
                   alt={project.name}
                   className="w-full h-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
